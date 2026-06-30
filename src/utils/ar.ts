@@ -177,7 +177,10 @@ export function drawAr(
   const re = map(a.rightEye)
   const mid = { x: (le.x + re.x) / 2, y: (le.y + re.y) / 2 }
   const eyeDist = Math.hypot(re.x - le.x, re.y - le.y) || W * 0.2
-  const angle = Math.atan2(re.y - le.y, re.x - le.x)
+  // order the eyes left→right in SCREEN space so the angle is the head tilt
+  // (~0 when upright) regardless of mirroring — otherwise rotated emojis flip
+  const [p1, p2] = le.x <= re.x ? [le, re] : [re, le]
+  const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x)
 
   const pts: Record<Anchor, Pt> = {
     eyes: mid,
