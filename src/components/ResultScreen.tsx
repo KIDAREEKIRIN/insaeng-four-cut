@@ -157,7 +157,7 @@ export default function ResultScreen({
     // keep a copy in the local gallery
     saveToGallery(final).then(() => setSaved(true))
 
-    const file = dataUrlToFile(final, `인생네컷_${Date.now()}.png`)
+    const file = dataUrlToFile(final, `기산네컷_${Date.now()}.png`)
     if (canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({ files: [file], title: t('brand.full') })
@@ -236,7 +236,7 @@ export default function ResultScreen({
     setQr({ phase: 'uploading' })
     saveToGallery(final).then(() => setSaved(true))
     try {
-      const file = dataUrlToFile(final, `인생네컷_${Date.now()}.png`)
+      const file = dataUrlToFile(final, `기산네컷_${Date.now()}.png`)
       const link = await uploadForQr(file)
       const qrImg = await QRCode.toDataURL(link, { margin: 1, width: 360, color: { dark: '#1a1714', light: '#f5ece0' } })
       setQr({ phase: 'done', qr: qrImg, link })
@@ -506,7 +506,7 @@ export default function ResultScreen({
             </h3>
             <img src={gif.url} alt={t('gif.title')} className="max-h-[52vh] w-auto rounded-xl" />
             <button
-              onClick={() => saveImage(gif.url, `인생네컷_${Date.now()}.gif`)}
+              onClick={() => saveImage(gif.url, `기산네컷_${Date.now()}.gif`)}
               className="w-full rounded-full bg-[var(--color-shutter)] py-3 font-bold text-white"
             >
               {canShare ? t('gif.saveShare') : t('gif.save')}
@@ -544,7 +544,7 @@ export default function ResultScreen({
               controls
             />
             <button
-              onClick={() => saveBlob(video.blob, `인생네컷_${Date.now()}.${video.ext}`)}
+              onClick={() => saveBlob(video.blob, `기산네컷_${Date.now()}.${video.ext}`)}
               className="w-full rounded-full bg-[var(--color-shutter)] py-3 font-bold text-white"
             >
               {canShare ? t('video.saveShare') : t('video.saveOnly')}
@@ -559,7 +559,9 @@ export default function ResultScreen({
         </div>
       )}
 
-      {showPrint && <PrintSheet preview={url} onClose={() => setShowPrint(false)} />}
+      {showPrint && (
+        <PrintSheet preview={url} getImage={getFinal} onClose={() => setShowPrint(false)} />
+      )}
 
       {/* QR share modal */}
       {qr.phase !== 'idle' && (

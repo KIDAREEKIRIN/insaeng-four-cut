@@ -35,7 +35,7 @@ export async function composeVideo(
     throw new Error('MediaRecorder not supported')
   }
   const style = opts?.style ?? DEFAULT_FRAME_STYLE
-  const brand = opts?.brand ?? '인생네컷'
+  const brand = opts?.brand ?? '기산네컷'
   const fps = opts?.fps ?? 12
   const loops = opts?.loops ?? 3
 

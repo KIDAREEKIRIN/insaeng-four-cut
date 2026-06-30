@@ -34,7 +34,7 @@ export default function GalleryScreen({ onHome, onShoot }: Props) {
 
   async function handleSave(item: GalleryItem) {
     const ext = item.dataUrl.startsWith('data:image/gif') ? 'gif' : 'png'
-    const file = dataUrlToFile(item.dataUrl, `인생네컷_${item.createdAt}.${ext}`)
+    const file = dataUrlToFile(item.dataUrl, `기산네컷_${item.createdAt}.${ext}`)
     if (canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({ files: [file], title: t('brand.full') })

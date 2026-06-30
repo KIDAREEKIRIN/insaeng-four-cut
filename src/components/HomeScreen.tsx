@@ -28,6 +28,18 @@ export default function HomeScreen({ onStart, onGallery }: Props) {
       </div>
 
       <div className="animate-slide-up relative z-10 flex flex-col items-center">
+        {/* mascot — uses your mascot.png if present, otherwise the built-in SVG */}
+        <img
+          src={`${import.meta.env.BASE_URL}mascot.png`}
+          onError={(e) => {
+            const img = e.currentTarget
+            if (!img.src.endsWith('mascot.svg')) img.src = `${import.meta.env.BASE_URL}mascot.svg`
+          }}
+          alt="기산네컷 마스코트"
+          className="animate-shimmer mb-3 h-40 w-40 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)] sm:h-48 sm:w-48"
+          draggable={false}
+        />
+
         <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs tracking-widest text-[var(--color-paper-dim)]">
           {t('home.badge')}
         </span>

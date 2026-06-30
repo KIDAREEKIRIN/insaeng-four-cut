@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useI18n } from '../i18n'
+import { printImage } from '../utils/print'
 
 interface Props {
   preview: string | null
+  getImage: () => Promise<string | null>
   onClose: () => void
 }
 
@@ -12,7 +14,7 @@ const SIZES = [
   { id: 'strip', label: '스트립', price: 800 },
 ] as const
 
-export default function PrintSheet({ preview, onClose }: Props) {
+export default function PrintSheet({ preview, getImage, onClose }: Props) {
   const { t } = useI18n()
   const [sizeId, setSizeId] = useState<string>('4x6')
   const [qty, setQty] = useState(1)
@@ -20,6 +22,11 @@ export default function PrintSheet({ preview, onClose }: Props) {
 
   const size = SIZES.find((s) => s.id === sizeId) ?? SIZES[0]
   const total = size.price * qty
+
+  async function selfPrint() {
+    const img = await getImage()
+    if (img) printImage(img)
+  }
 
   function pay() {
     // demo only — no real payment is processed
@@ -32,10 +39,9 @@ export default function PrintSheet({ preview, onClose }: Props) {
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-sm rounded-t-3xl bg-[var(--color-ink-card)] p-6 sm:rounded-3xl"
       >
-        <h3 className="mb-1 text-center text-xl text-[var(--color-paper)]" style={{ fontFamily: 'var(--font-display)' }}>
+        <h3 className="mb-4 text-center text-xl text-[var(--color-paper)]" style={{ fontFamily: 'var(--font-display)' }}>
           {t('print.title')}
         </h3>
-        <p className="mb-4 text-center text-[11px] text-[var(--color-shutter)]">{t('print.demo')}</p>
 
         {order ? (
           <div className="flex flex-col items-center gap-3 py-6 text-center">
@@ -51,8 +57,24 @@ export default function PrintSheet({ preview, onClose }: Props) {
         ) : (
           <>
             {preview && (
-              <img src={preview} alt="" className="mx-auto mb-4 max-h-40 w-auto rounded-lg" />
+              <img src={preview} alt="" className="mx-auto mb-4 max-h-36 w-auto rounded-lg" />
             )}
+
+            {/* real self-print */}
+            <button
+              onClick={selfPrint}
+              className="w-full rounded-full bg-[var(--color-shutter)] py-3.5 font-bold text-white transition active:scale-95"
+            >
+              {t('print.self')}
+            </button>
+            <p className="mb-4 mt-1.5 text-center text-[11px] text-[var(--color-paper-dim)]">{t('print.selfHint')}</p>
+
+            <div className="mb-4 border-t border-white/10" />
+
+            {/* demo order flow */}
+            <p className="mb-2 text-center text-xs font-bold tracking-widest text-[var(--color-shutter)]">
+              {t('print.orderTitle')}
+            </p>
 
             <p className="mb-1.5 text-xs tracking-widest text-[var(--color-paper-dim)]">{t('print.size')}</p>
             <div className="mb-4 flex gap-2">

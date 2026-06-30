@@ -25,8 +25,8 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
       },
       manifest: {
-        name: '인생네컷',
-        short_name: '인생네컷',
+        name: '기산네컷',
+        short_name: '기산네컷',
         description: '나만의 네컷 사진 부스',
         theme_color: '#1a1714',
         background_color: '#1a1714',

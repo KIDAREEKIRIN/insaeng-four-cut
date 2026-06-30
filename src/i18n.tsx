@@ -5,9 +5,9 @@ export type Lang = 'ko' | 'en'
 type Dict = Record<string, string>
 
 const ko: Dict = {
-  'brand.full': '인생네컷',
+  'brand.full': '기산네컷',
   'home.badge': '● REC · 나만의 사진 부스',
-  'home.titleA': '인생',
+  'home.titleA': '기산',
   'home.titleB': '네컷',
   'home.subtitle': '카운트다운에 맞춰 네 컷을 찍고,\n나만의 프레임으로 완성해 보세요.',
   'home.start': '촬영 시작',
@@ -94,6 +94,9 @@ const ko: Dict = {
   'print.demo': '데모 · 실제 결제는 되지 않아요',
   'print.done': '주문이 접수됐어요! (데모)',
   'print.orderNo': '주문번호',
+  'print.self': '🖨 내 프린터로 바로 인쇄',
+  'print.selfHint': 'AirPrint·연결된 프린터로 실제 출력돼요',
+  'print.orderTitle': '프린트 주문 (데모)',
 
   'multi.start': '👥 함께 찍기',
   'multi.title': '함께 찍기',
@@ -146,9 +149,9 @@ const ko: Dict = {
 }
 
 const en: Dict = {
-  'brand.full': 'LIFE4CUT',
+  'brand.full': 'GISAN4CUT',
   'home.badge': '● REC · Your photo booth',
-  'home.titleA': 'LIFE',
+  'home.titleA': 'GISAN',
   'home.titleB': '4CUT',
   'home.subtitle': 'Snap four shots on the countdown,\nthen finish with your own frame.',
   'home.start': 'Start',
@@ -235,6 +238,9 @@ const en: Dict = {
   'print.demo': 'Demo · no real payment',
   'print.done': 'Order received! (demo)',
   'print.orderNo': 'Order no.',
+  'print.self': '🖨 Print on my printer',
+  'print.selfHint': 'Really prints via AirPrint / a connected printer',
+  'print.orderTitle': 'Order prints (demo)',
 
   'multi.start': '👥 Shoot together',
   'multi.title': 'Shoot together',

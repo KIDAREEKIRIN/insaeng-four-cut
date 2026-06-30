@@ -23,7 +23,7 @@ export async function composeGif(
   opts?: { style?: FrameStyle; brand?: string; cellW?: number; delay?: number },
 ): Promise<string> {
   const style = opts?.style ?? DEFAULT_FRAME_STYLE
-  const brand = opts?.brand ?? '인생네컷'
+  const brand = opts?.brand ?? '기산네컷'
   const cellW = opts?.cellW ?? 280
   const delay = opts?.delay ?? 110
 
