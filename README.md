@@ -2,6 +2,10 @@
 
 웹(PWA) 기반 네컷 사진 부스. 카운트다운에 맞춰 연속 촬영하고, 필터·프레임을 골라 한 장의 필름 스트립으로 합성·저장합니다.
 
+**▶ 라이브 데모: https://kidareekirin.github.io/insaeng-four-cut/**
+
+> 📱 카메라는 권한 허용이 필요해요. 아이폰/아이패드는 Safari, 안드로이드는 Chrome 권장. 홈 화면에 추가하면 앱처럼 쓸 수 있어요.
+
 ## 기술 스택
 
 - **Vite + React 19 + TypeScript**
